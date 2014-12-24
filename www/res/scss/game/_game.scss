@@ -1,0 +1,335 @@
+// Variables
+
+// Color definition
+$primary-color: #0087cc !default;
+$secondary-color: #212121 !default;
+
+$text-color: #333 !default;
+$text-color-lighter: #666 !default;
+$text-color-light: #444 !default;
+$text-color-dark: #212121 !default;
+$text-color-darker: #111 !default;
+
+$success-color: #2ecc71 !default;
+$draw-color: #f39c12 !default;
+$error-color: #e74c3c !default;
+
+$background-color: #fafafa !default;
+
+$box-shadow-color: #006599 !default;
+
+// Font definition
+$font-family: 'Open Sans', sans-serif;
+$font-size: 1rem !default;
+
+
+// Mixins
+@mixin fade-in-effect {
+  -webkit-animation: fade-in-effect 3s forwards;
+  -moz-animation:    fade-in-effect 3s forwards;
+  -o-animation:      fade-in-effect 3s forwards;
+  animation:         fade-in-effect 3s forwards;
+}
+
+@mixin fight-player-1 {
+  -webkit-animation: fight-player-1 3s forwards;
+  -moz-animation:    fight-player-1 3s forwards;
+  -o-animation:      fight-player-1 3s forwards;
+  animation:         fight-player-1 3s forwards;
+}
+
+@mixin fight-player-2 {
+  -webkit-animation: fight-player-2 3s forwards;
+  -moz-animation:    fight-player-2 3s forwards;
+  -o-animation:      fight-player-2 3s forwards;
+  animation:         fight-player-2 3s forwards;
+}
+
+@mixin fade-in-effect-fight {
+  -webkit-animation: fade-in-effect-fight 3s forwards;
+  -moz-animation:    fade-in-effect-fight 3s forwards;
+  -o-animation:      fade-in-effect-fight 3s forwards;
+  animation:         fade-in-effect-fight 3s forwards;
+}
+
+@mixin image-mirror-effect {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+// Rules
+
+body {
+  font-family: $font-family;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+h1 {
+  margin-bottom: .5rem;
+  font-size: 24px;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.result-header {
+  position: relative;
+  top: -20px;
+}
+
+.game-wrapper {
+  margin-top: 100px;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.item {
+  transition: background-color 200ms ease-in-out;
+  text-align: center;
+  border-radius: 50%;
+  padding: 2em;
+
+  > img {
+    cursor: pointer;
+  }
+
+  &:hover {
+    background-color: darken($background-color, 5%);
+    box-shadow: 0 3px 3px lighten($text-color-lighter, 30%);
+  }
+
+  &.item--left {
+    float: left;
+  }
+
+  &.item--no-hover {
+    > img {
+      cursor: default;
+    }
+
+    &:hover {
+      background-color: transparent;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+}
+
+.status-bar {
+  color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 3em;
+  padding: 0.8em 1.5em;
+  font-size: $font-size * 0.9;
+
+  &.info {
+    background-color: darken($background-color, 5%);
+    color: $text-color-dark;
+  }
+
+  &.win {
+    background-color: $success-color;
+    @include fade-in-effect;
+  }
+
+  &.draw {
+    background-color: $draw-color;
+    @include fade-in-effect;
+  }
+
+  &.lost {
+    background-color: $error-color;
+    @include fade-in-effect;
+  }
+
+  .icon-remove {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-decoration: none;
+  }
+
+  &.status-bar--hidden {
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+  }
+}
+
+.fade-in-effect-fight {
+  @include fade-in-effect-fight;
+
+  &.mirror-effect {
+    @include image-mirror-effect
+  }
+}
+
+.fight {
+  position: relative;
+}
+
+.animation-1, .animation-2 {
+  background: url('../img/rock.png') no-repeat;
+  position: absolute;
+  left: 55px;
+  width: 135px;
+  height: 100px;
+  z-index: 9999;
+}
+
+.animation-1 {
+  @include fight-player-1;
+}
+
+.animation-2 {
+  @include fight-player-2;
+}
+
+@-webkit-keyframes fade-in-effect {
+  0%   { opacity: 0; }
+  75%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes fade-in-effect {
+  0%   { opacity: 0; }
+  75%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes fade-in-effect {
+  0%   { opacity: 0; }
+  75%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fade-in-effect {
+  0%   { opacity: 0; }
+  75%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-webkit-keyframes fight-player-1 {
+  0% { -webkit-transform: translate(0, 0); opacity: 1; }
+  13% { -webkit-transform: translate(100px, -60px); opacity: 1; }
+  26% { -webkit-transform: translate(90px, 0); opacity: 1; }
+  39% { -webkit-transform: translate(100px, -60px); opacity: 1; }
+  52% { -webkit-transform: translate(90px, 0); opacity: 1; }
+  65% { -webkit-transform: translate(100px, -60px); opacity: 1; }
+  78% { -webkit-transform: translate(90px, 0); opacity: 1; }
+  90% { -webkit-transform: translate(0, 0); opacity: 1; }
+  100% { -webkit-transform: translate(0, 0); opacity: 0; }
+}
+
+@-moz-keyframes fight-player-1 {
+  0% { transform: translate(0, 0); opacity: 1; }
+  13% { transform: translate(100px, -60px); opacity: 1; }
+  26% { transform: translate(90px, 0); opacity: 1; }
+  39% { transform: translate(100px, -60px); opacity: 1; }
+  52% { transform: translate(90px, 0); opacity: 1; }
+  65% { transform: translate(100px, -60px); opacity: 1; }
+  78% { transform: translate(90px, 0); opacity: 1; }
+  90% { transform: translate(0, 0); opacity: 1; }
+  100% { transform: translate(0, 0); opacity: 0; }
+}
+
+@-o-keyframes fight-player-1 {
+  0% { -o-transform: translate(0, 0); opacity: 1; }
+  13% { -o-transform: translate(100px, -60px); opacity: 1; }
+  26% { -o-transform: translate(90px, 0); opacity: 1; }
+  39% { -o-transform: translate(100px, -60px); opacity: 1; }
+  52% { -o-transform: translate(90px, 0); opacity: 1; }
+  65% { -o-transform: translate(100px, -60px); opacity: 1; }
+  78% { -o-transform: translate(90px, 0); opacity: 1; }
+  90% { -o-transform: translate(0, 0); opacity: 1; }
+  100% { -o-transform: translate(0, 0); opacity: 0; }
+}
+
+@keyframes fight-player-1 {
+  0% { transform: translate(0, 0); opacity: 1; }
+  13% { transform: translate(100px, -60px); opacity: 1; }
+  26% { transform: translate(90px, 0); opacity: 1; }
+  39% { transform: translate(100px, -60px); opacity: 1; }
+  52% { transform: translate(90px, 0); opacity: 1; }
+  65% { transform: translate(100px, -60px); opacity: 1; }
+  78% { transform: translate(90px, 0); opacity: 1; }
+  90% { transform: translate(0, 0); opacity: 1; }
+  100% { transform: translate(0, 0); opacity: 0; }
+}
+
+@-webkit-keyframes fight-player-2 {
+  0% { -webkit-transform: translate(0, 0) scaleX(-1); opacity: 1; }
+  13% { -webkit-transform: translate(-100px, -60px) scaleX(-1); opacity: 1; }
+  26% { -webkit-transform: translate(-90px, 0) scaleX(-1); opacity: 1; }
+  39% { -webkit-transform: translate(-100px, -60px) scaleX(-1); opacity: 1; }
+  52% { -webkit-transform: translate(-90px, 0) scaleX(-1); opacity: 1; }
+  65% { -webkit-transform: translate(-100px, -60px) scaleX(-1); opacity: 1; }
+  78% { -webkit-transform: translate(-90px, 0) scaleX(-1); opacity: 1; }
+  90% { -webkit-transform: translate(0, 0) scaleX(-1); opacity: 1; }
+  100% { -webkit-transform: translate(0, 0) scaleX(-1); opacity: 0; }
+}
+
+@-moz-keyframes fight-player-2 {
+  0% { transform: translate(0, 0) scaleX(-1); opacity: 1; }
+  13% { transform: translate(-100px, -60px) scaleX(-1); opacity: 1; }
+  26% { transform: translate(-90px, 0) scaleX(-1); opacity: 1; }
+  39% { transform: translate(-100px, -60px) scaleX(-1); opacity: 1; }
+  52% { transform: translate(-90px, 0) scaleX(-1); opacity: 1; }
+  65% { transform: translate(-100px, -60px) scaleX(-1); opacity: 1; }
+  78% { transform: translate(-90px, 0) scaleX(-1); opacity: 1; }
+  90% { transform: translate(0, 0) scaleX(-1); opacity: 1; }
+  100% { transform: translate(0, 0) scaleX(-1); opacity: 0; }
+}
+
+@-o-keyframes fight-player-2 {
+  0% { -o-transform: translate(0, 0) scaleX(-1); opacity: 1; }
+  13% { -o-transform: translate(-100px, -60px) scaleX(-1); opacity: 1; }
+  26% { -o-transform: translate(-90px, 0) scaleX(-1); opacity: 1; }
+  39% { -o-transform: translate(-100px, -60px) scaleX(-1); opacity: 1; }
+  52% { -o-transform: translate(-90px, 0) scaleX(-1); opacity: 1; }
+  65% { -o-transform: translate(-100px, -60px) scaleX(-1); opacity: 1; }
+  78% { -o-transform: translate(-90px, 0) scaleX(-1); opacity: 1; }
+  90% { -o-transform: translate(0, 0) scaleX(-1); opacity: 1; }
+  100% { -o-transform: translate(0, 0) scaleX(-1); opacity: 0; }
+}
+
+@keyframes fight-player-2 {
+  0% { transform: translate(0, 0) scaleX(-1); opacity: 1; }
+  13% { transform: translate(-100px, -60px) scaleX(-1); opacity: 1; }
+  26% { transform: translate(-90px, 0) scaleX(-1); opacity: 1; }
+  39% { transform: translate(-100px, -60px) scaleX(-1); opacity: 1; }
+  52% { transform: translate(-90px, 0) scaleX(-1); opacity: 1; }
+  65% { transform: translate(-100px, -60px) scaleX(-1); opacity: 1; }
+  78% { transform: translate(-90px, 0) scaleX(-1); opacity: 1; }
+  90% { transform: translate(0, 0) scaleX(-1); opacity: 1; }
+  100% { transform: translate(0, 0) scaleX(-1); opacity: 0; }
+}
+
+@-webkit-keyframes fade-in-effect-fight {
+  0%   { opacity: 0; }
+  95%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes fade-in-effect-fight {
+  0%   { opacity: 0; }
+  95%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes fade-in-effect-fight {
+  0%   { opacity: 0; }
+  95%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fade-in-effect-fight {
+  0%   { opacity: 0; }
+  95%  { opacity: 0; }
+  100% { opacity: 1; }
+}

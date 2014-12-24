@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rock, paper, scissors HTML 5 Game</title>
+    <link rel="stylesheet" type="text/css" href="./build/css/style.css">
+    <script src="./build/js/app.main.js"></script>
+    <script src="./res/js/app.config.js"></script>
+</head>
+<body>
+<section class="game-wrapper">
+
+    <!-- main menu -->
+    <section id="menu_screen" class="game-menu text-centered">
+        <h1>ROCK PAPER SCISSORS</h1>
+        <h2>HTML5 GAME</h2>
+        <ul class="game-menu__list">
+            <!-- TODO: new tab should be opened // local storage for mode -->
+            <li><a id="player1_mode" class="button" href="#" onclick="router.goToState('selection')" >Start new game?</a></li>
+            <!-- TODO: add computer vs computer mode -->
+        </ul>
+        <!-- TODO: add statistics for current mode -->
+    </section>
+
+    <!-- selection screen -->
+    <section id="selection_screen" class="game-selection">
+        <div id="status_bar" class="status-bar info">
+            <p><strong>Hint:</strong> Click on the image of your choice</p>
+            <a href="#" class="icon-remove" onclick="view.removeProgressBar('status_bar')">x</a>
+        </div>
+        <div class="row">
+            <h2 id="selection_name"></h2>
+        </div>
+        <div class="row">
+            <div id="rock" class="column-4">
+                <figure class="item">
+                    <img src="./build/img/rock.png" alt="rock">
+                    <figcaption>Rock</figcaption>
+                </figure>
+            </div>
+            <div id="paper" class="column-4">
+                <figure class="item item--left">
+                    <img src="./build/img/paper.png" alt="paper">
+                    <figcaption>Paper</figcaption>
+                </figure>
+            </div>
+            <div id="scissors" class="column-4">
+                <figure class="item item--left">
+                    <img src="./build/img/scissors.png" alt="scissors">
+                    <figcaption>Scissors</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- show screen -->
+    <section id="show_screen" class="text-centered">
+        <div class="row">
+            <div class="column-6">
+                <h3 class="result-header">You</h3>
+                <figure class="item item--no-hover">
+                    <div class="fight"><span class="animation-1"></span></div>
+                    <img id="player1_img" class="fade-in-effect-fight" src="" alt="" />
+                    <figcaption id="player1_selection" class="fade-in-effect-fight"></figcaption>
+                </figure>
+            </div>
+            <div class="column-6">
+                <h3 class="result-header">Computer</h3>
+                <figure class="item item--no-hover">
+                    <div class="fight"><span class="animation-2"></span></div>
+                    <img id="player2_img" class="fade-in-effect-fight mirror-effect" src="" alt="" />
+                    <figcaption id="player2_selection" class="fade-in-effect-fight"></figcaption>
+                </figure>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column-12">
+                <a class="button" href="#" onclick="router.goToState('selection')">try again?</a>
+            </div>
+        </div>
+    </section>
+</section>
+</body>
+</html>
